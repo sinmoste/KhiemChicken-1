@@ -18,7 +18,7 @@ public class groundeath : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             // player.Damage(3);// dặm bẫy trừ đi 3hp
-            player.ourHealth = 0;
+            player.ourHealth -=1;
         }
     }
 }

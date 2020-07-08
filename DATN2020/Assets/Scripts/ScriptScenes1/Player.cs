@@ -203,10 +203,14 @@ public class Player : MonoBehaviour
             gem.Boom();
         }
         //checkpoint
-        if (col.CompareTag("CheckPoint"))
-        {
-            location = col.transform.position;
-        }
+       // if (Input.GetKeyDown(KeyCode.Z))
+        //{
+            if (col.CompareTag("CheckPoint"))
+            {
+                location = col.transform.position;
+            }
+       // }
+        
         if (col.CompareTag("landDead"))
         {
             transform.position = location;
