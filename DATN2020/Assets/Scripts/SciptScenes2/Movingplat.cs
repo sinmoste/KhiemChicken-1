@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Movingplat : MonoBehaviour
 {
-    public float speed = 0.04f, changeDirection = -1;
+    // Start is called before the first frame update
+    public float speed = 0.05f, changeDirection = -1;
     Vector3 Move;
     public PauseMenu pausep;
 
@@ -14,7 +15,7 @@ public class Movingplat : MonoBehaviour
     {
         Move = this.transform.position;
         pausep = GameObject.FindGameObjectWithTag("MainCamera").GetComponentInParent<PauseMenu>();
-         
+
     }
 
     // Update is called once per frame
@@ -23,13 +24,16 @@ public class Movingplat : MonoBehaviour
         if (pausep.pause)
         {
             this.transform.position = this.transform.position;
+
         }
         if (pausep.pause == false)
         {
             Move.x += speed;
             this.transform.position = Move;
         }
-    } 
+
+
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {

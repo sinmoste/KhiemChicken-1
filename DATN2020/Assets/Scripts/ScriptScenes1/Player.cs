@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 
-    public float speed = 50f, maxspeed = 3, jumpPow = 220f;
+    public float speed = 50f, maxspeed = 3f, jumpPow = 220f;
     public bool grounded = true, faceright = true, doublejump = false;
 
     //Máu nhân vật
@@ -68,9 +68,7 @@ public class Player : MonoBehaviour
                 }
             }
         }
-
     }
-
     void FixedUpdate()
     {
         float h = Input.GetAxis("Horizontal");
@@ -120,9 +118,7 @@ public class Player : MonoBehaviour
         {
             Death();
         }
-        
     }
-
     public void Flip()
     {
         faceright = !faceright;
@@ -137,7 +133,6 @@ public class Player : MonoBehaviour
         if(PlayerPrefs.GetInt("highscore") < gm.points)
             PlayerPrefs.SetInt("highscore", gm.points);
     }
-
     //Start Bẫy chông
     public void Damage(int damage)
     {
@@ -148,7 +143,6 @@ public class Player : MonoBehaviour
             healthBar.SetHealth(newhealth); // set lại thanh máu hero
             gameObject.GetComponent<Animation>().Play("redflash");// nháy đỏ khi ng chơi mất hp
         }
-
     }
     //bẫy chông
     public void Knockback(float Knockpow, Vector2 Knockdir)
@@ -157,19 +151,6 @@ public class Player : MonoBehaviour
         r2.AddForce(new Vector2(Knockdir.x * -35, Knockdir.y * Knockpow));//(-40 độ giật lùi khi chạm bẫy)
     }
     //End Bẫy chông
-    //Start Knockback người chơi chạm quái
-    //public void Knockbackop(float Knockpow, Vector2 Knockdir, bool knockFromRight)//Chạm thay đổi bay
-    //{
-    //    r2.velocity = new Vector2(0, 0);
-    //    if (knockFromRight)
-    //    {
-    //        r2.AddForce(new Vector2(Knockdir.x * -100f, Knockdir.y * Knockpow));
-    //    }
-    //    if (!knockFromRight)
-    //    {
-    //        r2.AddForce(new Vector2(Knockdir.x * 100f, Knockdir.y * Knockpow));
-    //    }
-    //}
     public void Knockbackop(float Knockpow, Vector2 Knockdir, bool knockFromRight)//thay đổi độ bật lùi dựa knockdir và knockpow
     {
         r2.velocity = new Vector2(0, 0);
@@ -203,17 +184,21 @@ public class Player : MonoBehaviour
             gem.Boom();
         }
         //checkpoint
-       // if (Input.GetKeyDown(KeyCode.Z))
-        //{
-            if (col.CompareTag("CheckPoint"))
-            {
-                location = col.transform.position;
-            }
-       // }
-        
+        if (col.CompareTag("CheckPoint"))
+        {
+            location = col.transform.position;
+        }
         if (col.CompareTag("landDead"))
         {
             transform.position = location;
+        }
+        //tăng tốc độ di chuyển khi chạm giày
+        if (col.CompareTag("Shoe"))
+        {
+            Destroy(col.gameObject);
+            maxspeed = 4f;
+            speed = 70f;
+            StartCoroutine(timecount(20));
         }
     }
     //Endcoins
@@ -238,5 +223,14 @@ public class Player : MonoBehaviour
     {
         if (col.gameObject.name.Equals("Movingplat"))
             this.transform.parent = null;
+    }
+
+    //thời gian đếm ngược
+    IEnumerator timecount(float time)
+    {
+        yield return new WaitForSeconds(time);
+        maxspeed = 3f;
+        speed = 50f;
+        yield return 0;
     }
 }

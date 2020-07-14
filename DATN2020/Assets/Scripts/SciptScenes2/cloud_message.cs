@@ -19,7 +19,7 @@ public class cloud_message : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dem == 1)
+        if (dem == 5)
         {
             if (playerInRange)
             {

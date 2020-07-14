@@ -13,6 +13,8 @@ TagManager:
   - Movingplat
   - CheckPoint
   - landDead
+  - Ground
+  - Shoe
   layers:
   - Default
   - TransparentFX

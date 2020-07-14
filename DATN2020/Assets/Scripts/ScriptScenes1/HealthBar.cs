@@ -11,9 +11,11 @@ public class HealthBar : MonoBehaviour
     public opposumwalker creep;
     public Gradient gradient;
     public Image fill;
+    public Frog frog;
     public void Start()
     {
-        creep = GameObject.FindGameObjectWithTag("Enemy").GetComponent<opposumwalker>();
+       // creep = GameObject.FindGameObjectWithTag("Enemy").GetComponent<opposumwalker>();
+        //frog = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Frog>();
 
     }
     public void SetMaxHealth(int health)
@@ -32,7 +34,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-       // ChangeDirection();
+       
     }
     //kiểm tra hướng của thanh máu
     public void checkScale()
@@ -40,19 +42,6 @@ public class HealthBar : MonoBehaviour
         scale.x *= -1;
         transform.localScale = scale;
     }
-    //public void ChangeDirection()
-    //{
-    //    Vector3 temp = transform.localScale;
-
-    //    if (creep.faceright == false)
-    //    {
-    //        temp.x = 1f;
-    //    }
-    //    else
-    //    {
-    //        temp.x = -1f;
-    //    }
-    //    transform.localScale = temp;
-    //}
+    
         
 }
