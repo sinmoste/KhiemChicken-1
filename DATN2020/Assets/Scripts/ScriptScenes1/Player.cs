@@ -27,7 +27,8 @@ public class Player : MonoBehaviour
     public Gem gem;
     //Kiểm tra bất tử
     public bool immortal = false;
-    
+    //âm thanh
+    public SoundManager sound;
 
 
     // Use this for initialization
@@ -42,6 +43,8 @@ public class Player : MonoBehaviour
         cherry = gameObject.GetComponent<Cherry>();
         gem = gameObject.GetComponent<Gem>();
         location = transform.position;
+        //âm thanh
+        sound = GameObject.FindGameObjectWithTag("sound").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -108,6 +111,7 @@ public class Player : MonoBehaviour
         //mạng <=0 chết
         if (newhealth < 0)
         {
+            sound.Playsound("herodie");
             ourHealth -= 1;
             newhealth = maxhealth;
             healthBar.SetMaxHealth(newhealth);
@@ -115,7 +119,7 @@ public class Player : MonoBehaviour
         }
 
         if (ourHealth <= 0)
-        {
+        {          
             Death();
         }
     }
@@ -171,17 +175,17 @@ public class Player : MonoBehaviour
         Gem gem = col.gameObject.GetComponent<Gem>();
 
         if (col.CompareTag("Coins"))//Chạm trái cây có tag là coins
-        {
-            //Destroy(col.gameObject);
+        {        
             gm.points += 100;// cộng điểm
             cherry.Boom();//thay đổi animation nổ
-            
-        }
+            sound.Playsound("coins");
+        }      
         if (col.CompareTag("CoinsDiamond"))
         {
             //Destroy(col.gameObject);
             gm.points += 300;
             gem.Boom();
+            sound.Playsound("coins");
         }
         //checkpoint
         if (col.CompareTag("CheckPoint"))
@@ -195,6 +199,7 @@ public class Player : MonoBehaviour
         //tăng tốc độ di chuyển khi chạm giày
         if (col.CompareTag("Shoe"))
         {
+            sound.Playsound("powerup");
             Destroy(col.gameObject);
             maxspeed = 4f;
             speed = 70f;

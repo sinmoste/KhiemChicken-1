@@ -22,6 +22,8 @@ public class Frog : MonoBehaviour
     public HealthBar healthBar;
     public int maxHealth = 100;
     public Slider slider;
+    public SoundManager sound;
+
 
 
     private void Start()
@@ -31,6 +33,7 @@ public class Frog : MonoBehaviour
         anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         healthBar.SetMaxHealth(maxHealth);
+        sound = GameObject.FindGameObjectWithTag("sound").GetComponent<SoundManager>();
     }
 
     // Update is called once per frame
@@ -111,6 +114,7 @@ public class Frog : MonoBehaviour
     {
         if (maxHealth <= 0)
         {
+            sound.Playsound("destroy");
             anim.SetTrigger("DeathFrog");
         }
     }

@@ -15,6 +15,8 @@ public class opposums2 : MonoBehaviour
     public Animator anim;
     public int maxHealth = 100;
     public bool faceright = true;// kiểm tra trái phải.
+    public SoundManager sound;
+
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class opposums2 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         anim = gameObject.GetComponent<Animator>();
         healthBar.SetMaxHealth(maxHealth);
+        sound = GameObject.FindGameObjectWithTag("sound").GetComponent<SoundManager>();
     }
     private void Update()
     {
@@ -92,6 +95,7 @@ public class opposums2 : MonoBehaviour
     {
         if (maxHealth <= 0)
         {
+            sound.Playsound("destroy");
             anim.SetTrigger("Death");
         }
     }

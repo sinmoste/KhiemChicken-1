@@ -7,19 +7,23 @@ public class Door : MonoBehaviour
 {
     public int Levelload = 1;
     public Gamemaster gm;
+    public SoundManager sound;
+
 
     // Use this for initialization
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("Gamemaster").GetComponent<Gamemaster>();
+        sound = GameObject.FindGameObjectWithTag("sound").GetComponent<SoundManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
         {
+           
             savescore();
-            //gm.Inputtext.text = ("Press E to enter");
+            
         }
     }
 
@@ -29,6 +33,7 @@ public class Door : MonoBehaviour
         {
             //if (Input.GetKey(KeyCode.E))
             //{
+             
                 savescore();
                 SceneManager.LoadScene(Levelload);
             //}

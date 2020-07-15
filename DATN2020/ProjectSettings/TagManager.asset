@@ -15,6 +15,7 @@ TagManager:
   - landDead
   - Ground
   - Shoe
+  - sound
   layers:
   - Default
   - TransparentFX

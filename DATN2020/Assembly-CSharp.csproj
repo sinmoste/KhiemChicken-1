@@ -86,6 +86,7 @@
     <Compile Include="Assets\Scripts\ScriptScenes1\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\ScriptScenes1\Player.cs" />
     <Compile Include="Assets\Scripts\ScriptScenes1\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\ScriptScenes1\SoundManager.cs" />
     <Compile Include="Assets\Scripts\ScriptScenes1\Spikes.cs" />
     <Compile Include="Assets\Scripts\ScriptScenes1\groundeath.cs" />
     <Compile Include="Assets\Scripts\ScriptScenes1\opposum2.cs" />
