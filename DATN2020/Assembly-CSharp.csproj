@@ -69,7 +69,9 @@
     <Compile Include="Assets\Scripts\SciptScenes2\Frog.cs" />
     <Compile Include="Assets\Scripts\SciptScenes2\Groundchecklv2.cs" />
     <Compile Include="Assets\Scripts\SciptScenes2\Grounddeathcheck.cs" />
+    <Compile Include="Assets\Scripts\SciptScenes2\MainMenu.cs" />
     <Compile Include="Assets\Scripts\SciptScenes2\Movingplat.cs" />
+    <Compile Include="Assets\Scripts\SciptScenes2\SettingMenu.cs" />
     <Compile Include="Assets\Scripts\SciptScenes2\Spikes2.cs" />
     <Compile Include="Assets\Scripts\SciptScenes2\opposums2.cs" />
     <Compile Include="Assets\Scripts\SciptScenes2\warning.cs" />

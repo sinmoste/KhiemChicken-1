@@ -17,7 +17,7 @@ public class opposum2 : MonoBehaviour
     public int maxHealth = 100;
     public bool faceright = true;// kiểm tra trái phải.
     public SoundManager sound;
-
+    public AudioSource boom;
     private void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
@@ -25,6 +25,7 @@ public class opposum2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        boom = gameObject.GetComponent<AudioSource>();
         sound = GameObject.FindGameObjectWithTag("sound").GetComponent<SoundManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         anim = gameObject.GetComponent<Animator>();
@@ -94,7 +95,7 @@ public class opposum2 : MonoBehaviour
         if (maxHealth <= 0)
         {
             anim.SetTrigger("Death");
-            sound.Playsound("destroy");
+            //sound.Playsound("destroy");
         }
     }
     void Explosive()
@@ -112,5 +113,9 @@ public class opposum2 : MonoBehaviour
         {
             myBody.AddForce(new Vector2(temp.x * -60f, temp.y));//khi quay đầu
         }
+    }
+    public void Boom()
+    {
+        boom.Play();
     }
 }

@@ -23,11 +23,12 @@ public class Frog : MonoBehaviour
     public int maxHealth = 100;
     public Slider slider;
     public SoundManager sound;
-
+    public AudioSource boom;
 
 
     private void Start()
     {
+        boom = gameObject.GetComponent<AudioSource>();
         coll = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -114,7 +115,7 @@ public class Frog : MonoBehaviour
     {
         if (maxHealth <= 0)
         {
-            sound.Playsound("destroy");
+           // sound.Playsound("destroy");
             anim.SetTrigger("DeathFrog");
         }
     }
@@ -153,5 +154,9 @@ public class Frog : MonoBehaviour
         {
             rb.AddForce(new Vector2(temp.x * -1f, temp.y));//khi quay đầu
         }
+    }
+    public void Boom()
+    {
+        boom.Play();
     }
 }

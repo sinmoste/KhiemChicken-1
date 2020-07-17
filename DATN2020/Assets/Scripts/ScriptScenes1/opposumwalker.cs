@@ -16,14 +16,15 @@ public class opposumwalker : MonoBehaviour
     public int maxHealth = 100;
     public bool faceright = true;// kiểm tra trái phải.
     public SoundManager sound;
-
+    public AudioSource boom;
     private void Awake()
     {
         myBody = GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
     void Start()
-    {
+    {       
+        boom = gameObject.GetComponent<AudioSource>();
         sound = GameObject.FindGameObjectWithTag("sound").GetComponent<SoundManager>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         anim = gameObject.GetComponent<Animator>();
@@ -83,17 +84,15 @@ public class opposumwalker : MonoBehaviour
         }
     }
     void Damage(int damage)
-    {
-
+    {        
         maxHealth -= damage;
         healthBar.SetHealth(maxHealth);
     }
     void Death()
     {
         if (maxHealth <= 0)
-        {
-            anim.SetTrigger("Death");
-            sound.Playsound("destroy");
+        {         
+            anim.SetTrigger("Death");               
         }
     }
     void Explosive()
@@ -112,5 +111,9 @@ public class opposumwalker : MonoBehaviour
         {
             myBody.AddForce(new Vector2(temp.x * -400f, temp.y));//khi quay đầu
         }
+    }
+    public void Boom()
+    {
+        boom.Play();
     }
 }

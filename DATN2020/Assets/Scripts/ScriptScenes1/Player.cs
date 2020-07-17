@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
 
-    public float speed = 50f, maxspeed = 3f, jumpPow = 220f;
+    public float speed = 50f, maxspeed = 3f, jumpPow = 230f;
     public bool grounded = true, faceright = true, doublejump = false;
 
     //Máu nhân vật
@@ -230,7 +230,7 @@ public class Player : MonoBehaviour
             this.transform.parent = null;
     }
 
-    //thời gian đếm ngược
+    //thời gian đếm ngược đôi giày
     IEnumerator timecount(float time)
     {
         yield return new WaitForSeconds(time);
