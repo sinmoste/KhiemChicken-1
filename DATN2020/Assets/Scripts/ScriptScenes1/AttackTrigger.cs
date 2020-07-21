@@ -13,6 +13,9 @@ public class AttackTrigger : MonoBehaviour
             col.SendMessageUpwards("Damage", dmg);
             col.SendMessageUpwards("Knockbackscreep");
         }
-        
+        if (col.CompareTag("Boss"))
+        {
+            col.SendMessageUpwards("TakeDame", 100);
+        }
     }
 }
